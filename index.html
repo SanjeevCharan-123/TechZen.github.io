@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile and Computer Service Center</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .search-bar {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #0e6cae;
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        nav a {
+            margin-right: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .service-center {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .service-center:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .service-center img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+        .service-center h2 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .service-center p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .service-center a {
+            text-decoration: none;
+            color: #007BFF;
+            margin-right: 10px;
+        }
+        .rating {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .verified-badge {
+            display: inline-block;
+            background-color: #17a2b8;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        .service-center-details {
+            display: none;
+            margin: 15px 0 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .service-center-details h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .service-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .service-info-column {
+            flex: 1;
+            min-width: 250px;
+            margin-right: 20px;
+        }
+        .service-info-column h3 {
+            margin-top: 0;
+            color: #444;
+        }
+        .issue-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .issue-form h3 {
+            margin-top: 0;
+            color: #444;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+        .form-col {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 10px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="tel"],
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+        form textarea {
+            min-height: 100px;
+        }
+        form button {
+            padding: 12px 25px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #0069d9;
+        }
+        .recent-enquiries {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+        .contact-methods {
+            margin-top: 15px;
+        }
+        .hidden {
+            display: none;
+        }
+        .success-message {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .service-tag {
+            display: inline-block;
+            background-color: #e9ecef;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-right: 5px;
+            font-size: 0.8em;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MOBILE AND COMPUTER SERVICE CENTER</h1>
+        <h2>Welcome to Mobile and Computer Service Center</h2>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for mobile service center...">
+        <button onclick="performSearch()">Search</button>
+    </div>
+    <div id="search-results" style="text-align: center; margin-top: 20px;"></div>
+
+    <main>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Info</a>
+        </nav>
+
+        <h1 align="center">Popular Mobile Phone Repair & Services Centers</h1>
+
+        <!-- Service Center 1 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center1')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_v23jp7v23jp7v23j.jpeg" alt="TechFix Hub">
+            <div>
+                <h2>TechFix Hub</h2>
+                <div>
+                    <span class="rating">4.0 ★</span>
+                    <span>4 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Accessory Dealers</span>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:8374069357">📞 83740 69357</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center1')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">24 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center1" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>TechFix Hub has been serving customers since 2010 with expert mobile repair services. We specialize in all major brands and offer same-day service for most common issues.</p>
+                    <p><strong>Working Hours:</strong> 9:00 AM - 7:00 PM (Mon-Sat)</p>
+                    <p><strong>Specializations:</strong> Screen replacement, Battery issues, Water damage, Software problems</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>John D.</strong> ⭐⭐⭐⭐<br>"Fixed my phone screen quickly and at a reasonable price."</p>
+                    <p><strong>Sarah M.</strong> ⭐⭐⭐⭐⭐<br>"Excellent service! My phone works like new now."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center1')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center1-name">Full Name*</label>
+                            <input type="text" id="center1-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center1-email">Email*</label>
+                            <input type="email" id="center1-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center1-phone">Phone Number*</label>
+                            <input type="tel" id="center1-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center1-device">Device Type*</label>
+                            <select id="center1-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center1-brand">Device Brand & Model*</label>
+                    <input type="text" id="center1-brand" placeholder="e.g., Samsung Galaxy S21" required>
+                </div>
+                <div class="form-group">
+                    <label for="center1-issue">Describe Your Issue*</label>
+                    <textarea id="center1-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="center1-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center1-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center1-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+
+        <!-- Service Center 2 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center2')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_jncef4jncef4jnce.jpeg" alt="GadgetCare Pro">
+            <div>
+                <h2>GadgetCare Pro</h2>
+                <div>
+                    <span class="rating">4.5 ★</span>
+                    <span>10 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 456 Tech Street, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:9876543210">📞 98765 43210</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center2')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">50 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center2" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>GadgetCare Pro is known for its advanced diagnostic tools and certified technicians. We handle complex hardware and software issues with precision.</p>
+                    <p><strong>Working Hours:</strong> 8:30 AM - 8:00 PM (Mon-Sat)</p>
+                    <p><strong>Specializations:</strong> Logic board repairs, Data recovery, Software troubleshooting</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>Mike T.</strong> ⭐⭐⭐⭐⭐<br>"Recovered all my data after water damage. Lifesavers!"</p>
+                    <p><strong>Lisa K.</strong> ⭐⭐⭐⭐<br>"Professional service, though a bit pricey."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center2')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center2-name">Full Name*</label>
+                            <input type="text" id="center2-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center2-email">Email*</label>
+                            <input type="email" id="center2-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center2-phone">Phone Number*</label>
+                            <input type="tel" id="center2-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center2-device">Device Type*</label>
+                            <select id="center2-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center2-brand">Device Brand & Model*</label>
+                    <input type="text" id="center2-brand" placeholder="e.g., iPhone 13 Pro" required>
+                </div>
+                <div class="form-group">
+                    <label for="center2-issue">Describe Your Issue*</label>
+                    <textarea id="center2-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="center2-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center2-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center2-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+
+        <!-- Service Center 3 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center3')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_4i6f8v4i6f8v4i6f.jpeg" alt="QuickFix Repairs">
+            <div>
+                <h2>QuickFix Repairs</h2>
+                <div>
+                    <span class="rating">4.2 ★</span>
+                    <span>8 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 789 Quick Lane, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                    <span class="service-tag">Same Day Service</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:8765432109">📞 87654 32109</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center3')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">30 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center3" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>QuickFix Repairs specializes in fast, reliable repairs with most jobs completed within 2 hours. Our express service is perfect for those who can't be without their device.</p>
+                    <p><strong>Working Hours:</strong> 8:00 AM - 9:00 PM (Mon-Sun)</p>
+                    <p><strong>Specializations:</strong> Fast screen replacements, Battery swaps, Charging port repairs</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>Raj P.</strong> ⭐⭐⭐⭐⭐<br>"Had my screen replaced in just 45 minutes while I waited!"</p>
+                    <p><strong>Emma S.</strong> ⭐⭐⭐⭐<br>"Great quick service, friendly staff."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center3')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center3-name">Full Name*</label>
+                            <input type="text" id="center3-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center3-email">Email*</label>
+                            <input type="email" id="center3-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center3-phone">Phone Number*</label>
+                            <input type="tel" id="center3-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center3-device">Device Type*</label>
+                            <select id="center3-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center3-brand">Device Brand & Model*</label>
+                    <input type="text" id="center3-brand" placeholder="e.g., OnePlus 9 Pro" required>
+                </div>
+                <div class="form-group">
+                    <label for="center3-issue">Describe Your Issue*</label>
+                    <textarea id="center3-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="center3-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center3-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center3-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+
+        <!-- Service Center 4 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center4')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_dq13f3dq13f3dq13.jpeg" alt="Device Doctor">
+            <div>
+                <h2>Device Doctor</h2>
+                <div>
+                    <span class="rating">4.3 ★</span>
+                    <span>12 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 101 Smart Street, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                    <span class="service-tag">Smartphone Specialists</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:7654321098">📞 76543 21098</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center4')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">40 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center4" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>Device Doctor focuses exclusively on smartphone repairs with OEM parts and manufacturer-approved techniques. We're the preferred choice for high-end devices.</p>
+                    <p><strong>Working Hours:</strong> 10:00 AM - 8:00 PM (Mon-Sat)</p>
+                    <p><strong>Specializations:</strong> Premium smartphone repairs, Warranty-safe repairs, Camera module replacements</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>David L.</strong> ⭐⭐⭐⭐⭐<br>"Fixed my premium phone without voiding the warranty. Perfect!"</p>
+                    <p><strong>Sophia H.</strong> ⭐⭐⭐⭐<br>"Knowledgeable staff and quality service."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center4')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center4-name">Full Name*</label>
+                            <input type="text" id="center4-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center4-email">Email*</label>
+                            <input type="email" id="center4-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center4-phone">Phone Number*</label>
+                            <input type="tel" id="center4-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center4-device">Device Type*</label>
+                            <select id="center4-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center4-brand">Device Brand & Model*</label>
+                    <input type="text" id="center4-brand" placeholder="e.g., Google Pixel 6" required>
+                </div>
+                <div class="form-group">
+                    <label for="center4-issue">Describe Your Issue*</label>
+                    <textarea id="center4-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="center4-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center4-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center4-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+
+        <!-- Service Center 5 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center5')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_tri0zbtri0zbtri0.jpeg" alt="SmartTech Solutions">
+            <div>
+                <h2>SmartTech Solutions</h2>
+                <div>
+                    <span class="rating">4.7 ★</span>
+                    <span>15 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 202 Pro Lane, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                    <span class="service-tag">Professional Technicians</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:6543210987">📞 65432 10987</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center5')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">60 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center5" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>SmartTech Solutions employs certified technicians with manufacturer training. We offer professional-grade repairs with a 6-month warranty on all services.</p>
+                    <p><strong>Working Hours:</strong> 9:30 AM - 6:30 PM (Mon-Fri), 10:00 AM - 4:00 PM (Sat)</p>
+                    <p><strong>Specializations:</strong> Professional diagnostics, Board-level repairs, Warranty services</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>Michael B.</strong> ⭐⭐⭐⭐⭐<br>"Finally found a repair shop that knows what they're doing!"</p>
+                    <p><strong>Jennifer K.</strong> ⭐⭐⭐⭐⭐<br>"Worth every penny for the quality of service."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center5')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center5-name">Full Name*</label>
+                            <input type="text" id="center5-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center5-email">Email*</label>
+                            <input type="email" id="center5-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center5-phone">Phone Number*</label>
+                            <input type="tel" id="center5-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center5-device">Device Type*</label>
+                            <select id="center5-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center5-brand">Device Brand & Model*</label>
+                    <input type="text" id="center5-brand" placeholder="e.g., iPhone 14 Pro Max" required>
+                </div>
+                <div class="form-group">
+                    <label for="center5-issue">Describe Your Issue*</label>
+                    <textarea id="center5-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="center5-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center5-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center5-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+
+        <!-- Service Center 6 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center6')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_tcziuqtcziuqtczi.jpeg" alt="FixIT Mobile & Laptop">
+            <div>
+                <h2>FixIT Mobile & Laptop</h2>
+                <div>
+                    <span class="rating">4.6 ★</span>
+                    <span>20 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 303 Ultra Street, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                    <span class="service-tag">Ultra Fast Service</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:5432109876">📞 54321 09876</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center6')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">70 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center6" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>FixIT Mobile & Laptop combines speed with quality, offering most repairs within 1 hour. Our patented techniques ensure your device is repaired quickly without compromising quality.</p>
+                    <p><strong>Working Hours:</strong> 8:00 AM - 10:00 PM (Mon-Sun)</p>
+                    <p><strong>Specializations:</strong> Express repairs, On-the-spot diagnostics, Emergency services</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>Alex R.</strong> ⭐⭐⭐⭐⭐<br>"Fixed my phone in 30 minutes when I was in a rush!"</p>
+                    <p><strong>Nina W.</strong> ⭐⭐⭐⭐<br>"Impressive how fast they work without cutting corners."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center6')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center6-name">Full Name*</label>
+                            <input type="text" id="center6-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center6-email">Email*</label>
+                            <input type="email" id="center6-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center6-phone">Phone Number*</label>
+                            <input type="tel" id="center6-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center6-device">Device Type*</label>
+                            <select id="center6-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center6-brand">Device Brand & Model*</label>
+                    <input type="text" id="center6-brand" placeholder="e.g., Xiaomi Redmi Note 11" required>
+                </div>
+                <div class="form-group">
+                    <label for="center6-issue">Describe Your Issue*</label>
+                    <textarea id="center6-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="center6-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center6-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center6-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+
+        <!-- Service Center 7 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center7')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_xcg18cxcg18cxcg1.jpeg" alt="Gadget Genie">
+            <div>
+                <h2>Gadget Genie</h2>
+                <div>
+                    <span class="rating">4.4 ★</span>
+                    <span>18 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 404 Mega Lane, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                    <span class="service-tag">All Brands Specialist</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:4321098765">📞 43210 98765</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center7')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">55 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center7" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>Gadget Genie repairs all brands and models, from the latest smartphones to older devices. We keep a huge inventory of parts to serve all customers.</p>
+                    <p><strong>Working Hours:</strong> 9:00 AM - 7:30 PM (Mon-Sat)</p>
+                    <p><strong>Specializations:</strong> All brands, Rare models, Obsolete devices</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>Tom H.</strong> ⭐⭐⭐⭐⭐<br>"Only place that could fix my rare model phone!"</p>
+                    <p><strong>Priya M.</strong> ⭐⭐⭐⭐<br>"Great service for my older device when others refused."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center7')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center7-name">Full Name*</label>
+                            <input type="text" id="center7-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center7-email">Email*</label>
+                            <input type="email" id="center7-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center7-phone">Phone Number*</label>
+                            <input type="tel" id="center7-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center7-device">Device Type*</label>
+                            <select id="center7-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center7-brand">Device Brand & Model*</label>
+                    <input type="text" id="center7-brand" placeholder="e.g., Nokia 3310" required>
+                </div>
+                <div class="form-group">
+                    <label for="center7-issue">Describe Your Issue*</label>
+                    <textarea id="center7-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="center7-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center7-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center7-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+
+        <!-- Service Center 8 -->
+        <div class="service-center" onclick="toggleServiceCenterDetails('center8')">
+            <img src="C:\Users\sanje\Downloads\Gemini_Generated_Image_oas0mboas0mboas0.jpeg" alt="Rapid Repair Zone">
+            <div>
+                <h2>Rapid Repair Zone</h2>
+                <div>
+                    <span class="rating">4.8 ★</span>
+                    <span>25 Ratings</span>
+                    <span class="verified-badge">Verified</span>
+                </div>
+                <p><strong>Address:</strong> 505 Super Street, City, Country</p>
+                <div>
+                    <span class="service-tag">Mobile Phone Repair & Services</span>
+                    <span class="service-tag">Premium Service</span>
+                </div>
+                <div class="contact-methods">
+                    <a href="tel:3210987654">📞 32109 87654</a>
+                    <a href="https://web.whatsapp.com/">💬 WhatsApp</a>
+                    <a href="#" onclick="event.stopPropagation(); toggleServiceCenterDetails('center8')">📩 Send Enquiry</a>
+                </div>
+                <p class="recent-enquiries">80 people recently enquired</p>
+            </div>
+        </div>
+        <div id="center8" class="service-center-details">
+            <div class="service-info">
+                <div class="service-info-column">
+                    <h3>About This Service Center</h3>
+                    <p>Rapid Repair Zone offers premium repair services with luxury waiting areas and loaner devices. We treat your device with the utmost care it deserves.</p>
+                    <p><strong>Working Hours:</strong> 10:00 AM - 6:00 PM (Mon-Fri), 11:00 AM - 3:00 PM (Sat)</p>
+                    <p><strong>Specializations:</strong> Luxury device repairs, Concierge service, Loaner devices</p>
+                </div>
+                <div class="service-info-column">
+                    <h3>Customer Reviews</h3>
+                    <p><strong>James L.</strong> ⭐⭐⭐⭐⭐<br>"Felt like a 5-star service for my phone repair!"</p>
+                    <p><strong>Olivia P.</strong> ⭐⭐⭐⭐⭐<br>"The loaner phone was a lifesaver while mine was being fixed."</p>
+                </div>
+            </div>
+            
+            <form class="issue-form" onsubmit="handleIssueSubmit(event, 'center8')">
+                <h3>Submit Your Repair Request</h3>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center8-name">Full Name*</label>
+                            <input type="text" id="center8-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center8-email">Email*</label>
+                            <input type="email" id="center8-email" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="center8-phone">Phone Number*</label>
+                            <input type="tel" id="center8-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="center8-device">Device Type*</label>
+                            <select id="center8-device" required>
+                                <option value="">Select your device</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="center8-brand">Device Brand & Model*</label>
+                    <input type="text" id="center8-brand" placeholder="e.g., Samsung Galaxy Z Fold" required>
+                </div>
+                <div class="form-group">
+                    <label for="center8-issue">Describe Your Issue*</label>
+                    <textarea id="center8-issue" placeholder="Please describe the problem you're experiencing in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="center8-loaner"> I would like to request a loaner device during repair
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="center8-preferred-date">Preferred Service Date</label>
+                    <input type="text" id="center8-preferred-date" placeholder="e.g., ASAP or specific date">
+                </div>
+                <button type="submit">Submit Repair Request</button>
+                <div id="center8-success" class="success-message hidden">Your request has been submitted successfully!</div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 Mobile Service Center. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle service center details
+        function toggleServiceCenterDetails(centerId) {
+            const detailsElement = document.getElementById(centerId);
+            const isHidden = detailsElement.style.display === 'none';
+            
+            document.querySelectorAll('.service-center-details').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            if (isHidden) {
+                detailsElement.style.display = 'block';
+                detailsElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+    
+        // Handle form submission
+        function handleIssueSubmit(event, centerId) {
+            event.preventDefault();
+            
+            // Get form data
+            const form = event.target;
+            const formData = {
+                name: form.querySelector(`#${centerId}-name`).value,
+                phone: form.querySelector(`#${centerId}-phone`).value,
+                email: form.querySelector(`#${centerId}-email`).value,
+                device: form.querySelector(`#${centerId}-device`).value,
+                model: form.querySelector(`#${centerId}-brand`).value,
+                issue: form.querySelector(`#${centerId}-issue`).value,
+                date: form.querySelector(`#${centerId}-preferred-date`).value || "ASAP"
+            };
+    
+            // Show success message
+            const successElement = document.getElementById(`${centerId}-success`);
+            successElement.textContent = "✓ Request received - We'll contact you soon";
+            successElement.classList.remove('hidden');
+    
+            // Format WhatsApp message
+            const whatsappMessage = `New Service Request:
+            
+    Name: ${formData.name}
+    Phone: ${formData.phone}
+    Email: ${formData.email}
+    
+    Device: ${formData.device} (${formData.model})
+    Issue: ${formData.issue}
+    
+    Preferred Date: ${formData.date}
+    
+    Please contact this customer soon.`;
+    
+            // Encode for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/9177299322?text=${encodedMessage}`, '_blank');
+            
+            // Reset form
+            form.reset();
+            
+            // Hide message after 5 seconds (optional)
+            setTimeout(() => {
+                successElement.classList.add('hidden');
+            }, 5000);
+        }
+    
+        // Search function
+        function performSearch() {
+            const searchTerm = document.getElementById('search-input').value.trim();
+            document.getElementById('search-results').innerHTML = 
+                `<p>Search results for: ${searchTerm}</p>`;
+        }
+    </script>
+</body>
+</html>
